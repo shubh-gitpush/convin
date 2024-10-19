@@ -1,0 +1,69 @@
+http://127.0.0.1:8000/api/expenses/ ###use this link to see the data
+# Django Daily Expenses Sharing Application
+
+## Project Overview
+This project is a Django web application that allows users to track and share daily expenses. Users can add expenses, specify participants, and choose how to split the costs.
+
+## Steps to Implement the Project
+
+### 1. Setting Up the Django Project
+- Create a new Django project using the command:
+  ```bash
+  django-admin startproject daily_expenses
+  ```
+- Navigate to the project directory:
+  ```bash
+  cd daily_expenses
+  ```
+- Create a new app for managing expenses:
+  ```bash
+  python manage.py startapp expenses
+  ```
+
+### 2. Defining Models
+- Create models for `Expense` and `ExpenseParticipant` in `expenses/models.py`:
+  
+
+### 3. Setting Up Views
+- Create views in `expenses/views.py` to handle adding expenses and listing them:
+ 
+
+### 4. Setting Up URLs
+- Create a `urls.py` in the `expenses` app and define URL patterns:
+  
+
+### 5. Registering the App
+- Register the `expenses` app in `settings.py`:
+  
+  INSTALLED_APPS = [
+     
+      'expenses',
+      'rest_framework',
+  ]
+  
+
+### 6. Migrations
+- Make migrations and migrate the database:
+  ```bash
+  python manage.py makemigrations
+  python manage.py migrate
+  ```
+
+### 7. Testing the API
+- Use `curl` to test adding expenses and listing them:
+  ```bash
+  curl -X POST http://127.0.0.1:8000/api/add-expense/ -H "Content-Type: application/json" -d "{"total_amount": 3000, "description": "Dinner with friends", "participants": [{"user_id": 1, "split_method": "equal"}, {"user_id": 2, "split_method": "equal"}, {"user_id": 3, "split_method": "equal"}]}"
+  ```
+
+### 8. Testing the API
+http://127.0.0.1:8000/api/expenses/ use this link to see the data in json format.
+
+
+use python manage.py shell
+to check wheather data is present or not
+
+
+i have used test.py to run the data and present it in
+
+## Conclusion
+This project showcases how to build a Django application with RESTful APIs for managing daily expenses. Feel free to expand on this base by adding features such as user authentication, expense categories, and more.
